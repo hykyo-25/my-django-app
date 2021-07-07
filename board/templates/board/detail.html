@@ -1,0 +1,21 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="comment-all">
+    <h1>{{thread.th_text}}</h1>
+    {% for comment in thread.comment_set.all %}
+      <div class="comm">
+        <p>{{comment.comm_text}}</p><span>{{comment.comm_date}}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <form class="" action="{% url 'board:create_comment' thread.pk %}" method="post">
+    {% csrf_token %}
+    {% if error %}<p class="error"><strong>{{error}}</strong></p>{% endif  %}
+    <textarea name="text" rows="2" cols="60"></textarea><br>
+    <input type="submit" name="" value="コメントを追加">
+  </form>
+{% endblock %}

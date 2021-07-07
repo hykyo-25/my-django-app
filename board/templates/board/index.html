@@ -1,0 +1,24 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+  <div class="top">
+    <h1>最新のスレッド</h1>
+    <div class="thread">
+      {% for thread in threads %}
+      <li class="list"><a href="{% url 'board:detail' thread.pk %}">{{thread.th_text}}</a></li>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="add">
+    <form class="new-thread" action="{% url 'board:create_thread' %}" method="post">
+      {% csrf_token %}
+      {% if error %}<p class="error"><strong>{{error}}</strong></p>{% endif  %}
+      <textarea name="text" rows="1" cols="50"></textarea><br>
+      <input type="submit" name="" value="スレッドを追加">
+    </form>
+  </div>
+</main>
+{% endblock %}

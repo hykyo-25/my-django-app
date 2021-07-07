@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>掲示板</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" href="{% static 'board/styles.css' %}">
+  </head>
+  <body>
+    <header>
+      <div class="head-flex">
+        <h1>掲示板</h1>
+        <div class="top-btn">
+          <a href="{% url 'board:index' %}">TOP</a>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+  </body>
+</html>
